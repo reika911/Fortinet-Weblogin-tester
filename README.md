@@ -1,11 +1,26 @@
-# Fortinet-Weblogin-tester
-Script for pentester web login Fortinet , multithreads , request, fast, no more leaks , not for illegal use
- 
-Frequently Asked Questions (FAQ)
-1. What is FortiBrute?
-Answer: FortiBrute is a tool designed to perform a brute force attack on Fortinet SSL VPNs using a list of IP addresses and username-password combinations.
-2. Is FortiBrute legal to use?
-Answer: No, using brute force to gain unauthorized access to any system is illegal and unethical. FortiBrute is intended for educational purposes and authorized testing environments only.
-3. How do I install the dependencies?
-Answer: You can install the required dependencies using pip. Open your terminal or command prompt and run:
-pip install fake_useragent colorama requests
+Network Scanning Automation System
+Purpose: Automation of corporate network penetration testing through VPN access. Searching for compromised accounts and vulnerable services in internal networks.
+
+How it works:
+
+Takes a database of VPN credentials (logins/passwords)
+
+Creates isolated containers for each connection
+
+Scans internal networks for SMB services and port 9501
+
+Filters and sends significant results
+
+Key Technical Detail - PPP0 Interface:
+
+ppp0 is the VPN connection interface (Point-to-Point Protocol)
+
+Traffic to internal networks is routed through it
+
+Shows which networks are accessible through the VPN tunnel
+
+Result: The program automatically discovers all private networks available via VPN and scans only them, avoiding the public internet
+
+Operation Scheme:
+
+Load VPN credentials → 2. Initialize Docker network → 3. Create containers → 4. Connect to corporate VPN → 5. Discover CIDR networks via ppp0 → 6. Parallel scanning (SMB + Port 9501) → 7. Filter results → 8. Generate reports → 9. Send to Telegram → 10. Save to database
